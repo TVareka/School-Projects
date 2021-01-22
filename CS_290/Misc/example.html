@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      var apiKey = '193cc952cb08a0069456b52cf6734adc';
+
+      document.addEventListener('DOMContentLoaded', bindButtons);
+
+      function bindButtons(){
+        document.getElementById('urlSubmit').addEventListener('click', function(event){
+          var req = new XMLHttpRequest();
+          req.open('POST', 'https://api.openweathermap.org/data/2.5/weather?zip=53593,us&appid=' + apiKey, false);
+          req.setRequestHeader('Content-Type', 'application/json');
+          req.send(null);
+          var response = JSON.parse(req.responseText);
+          document.getElementById('temp').textContent = response.temp;
+          document.getElementById('feels_like').textContent = response.feels_like;
+          event.preventDefault();
+        })
+      }
+    </script>
+  </head>
+  <body>
+    <form>
+      <fieldset>
+        <legend>Find weather</legend>
+        <label for="Location"></label>
+        <input type="text" name="zipcode" id="zipcode">
+        <input type="text" name="country code" id="country">
+        <input type="submit" id="urlSubmit">
+      </fieldset>
+    </form>
+    <div>
+      <h2>Result</h2>
+      <ul>
+        <li><span>temp:</span><span id="temp"></span></li>
+        <li><span>feels like:</span><span id="feels_like"></span></li>
+      </ul>
+    </div>
+  </body>
+</html>

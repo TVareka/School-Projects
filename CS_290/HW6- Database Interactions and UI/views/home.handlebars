@@ -1,0 +1,63 @@
+<h1>Log Your Workouts</h1>
+
+<form id="workoutInput">
+	<fieldset>
+		<legend style="font-size: 25px"><b><i>Workout Tracker:</i></b></legend>
+		<label><b>Name:</b></label>
+		<input type="text" name="inputName" id="inputname"><br>
+
+		<label><b>Reps:</b></label>
+		<input type="number" name="inputReps" id="inputreps"><br>
+
+		<label><b>Weight:</b></label>
+		<input type="number" name="inputWeight" id="inputweight"><br>
+
+		<label><b>Date:</b></label>
+		<input type="text" name="inputDate" id="inputdate"><br>
+
+		<label><b>Units:</b></label><br>
+		<input type="radio" name="inputunits" id="pounds" value="Pounds">
+		<label for="pounds">Pounds</label><br>
+		<input type="radio" name="inputunits" id="kilos" value="Kilos">
+		<label for="kilos">Kilos</label><br><br>
+
+		<input type="submit" name="inputSubmit" id="workoutSubmit">
+	
+	</fieldset>
+</form>
+<br><br>{{#if workoutdata}}
+<table id="workoutTable">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Reps</th>
+			<th>Weight</th>
+			<th>Date</th>
+			<th>Units</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		{{#each workoutdata}}
+		<tr>
+			<td style="display:none" id="id">{{this.id}}</td>
+			<td id="name">{{this.name}}</td>
+			<td id="reps">{{this.reps}}</td>
+			<td id="weight">{{this.weight}}</td>
+			<td id="date">{{this.date}}</td>
+			<td id="units">{{this.units}}</td>
+			<td id="edit"><input type="button" value="EDIT" name="edit" onclick="">
+			<td id="delete"><input type="button" value="DELETE" name="delete" onclick=""></td></td>
+		</tr>
+		{{/each}}
+	</tbody>
+</table>
+{{/if}}
+
+<!-- Dont forget to finish the onclick commands once you have built a function for them-->
+
+<style type="text/css">
+	table, th, td {
+		border: 1px solid black;
+	}
+</style>
